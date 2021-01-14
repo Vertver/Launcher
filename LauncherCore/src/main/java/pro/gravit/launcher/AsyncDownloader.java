@@ -31,6 +31,7 @@ public class AsyncDownloader {
 
     public void downloadFile(URL url, Path target, long size) throws IOException {
         URLConnection connection = url.openConnection();
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
         try (InputStream input = connection.getInputStream()) {
             transfer(input, target, size);
         }
@@ -38,6 +39,7 @@ public class AsyncDownloader {
 
     public void downloadFile(URL url, Path target) throws IOException {
         URLConnection connection = url.openConnection();
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
         try (InputStream input = connection.getInputStream()) {
             IOHelper.transfer(input, target);
         }
